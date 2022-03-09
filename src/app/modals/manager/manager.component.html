@@ -1,0 +1,95 @@
+<p-table
+  #dt
+  [(selection)]="selectedCarrieres"
+  dataKey="id"
+  styleClass="p-datatable-customers"
+  [value]="managers"
+  [rowHover]="true"
+  [rows]="5"
+  responsiveLayout="scroll"
+  [paginator]="true"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [filterDelay]="0"
+  [globalFilterFields]="['id', 'lastName', 'name']"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [loading]="loading"
+>
+  <ng-template pTemplate="caption">
+    <div
+      class="table-header flex flex-column sm:flex-row justify-content-between align-items-center"
+    >
+      List of Customers
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          placeholder="Search"
+          (input)="filterGlobal(dt, $event)"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th pSortableColumn="id">
+        <div class="flex justify-content-between align-items-center">
+          Id
+          <p-sortIcon field="id"></p-sortIcon>
+          <p-columnFilter
+            type="text"
+            field="id"
+            display="menu"
+            class="ml-auto"
+          ></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="lastName">
+        <div class="flex justify-content-between align-items-center">
+          lastName
+          <p-sortIcon field="lastName"></p-sortIcon>
+          <p-columnFilter
+            type="date"
+            field="lastName"
+            display="menu"
+            class="ml-auto"
+          ></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="country.name">
+        <div class="flex justify-content-between align-items-center">
+          Name
+          <p-sortIcon field="name"></p-sortIcon>
+          <p-columnFilter
+            type="text"
+            field="name"
+            display="menu"
+            class="ml-auto"
+          ></p-columnFilter>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-manager>
+    <tr class="p-selectable-row">
+      <td>
+        <p-tableCheckbox [value]="manager"></p-tableCheckbox>
+      </td>
+      <td>
+        <span class="p-column-title">Name</span>
+        {{ manager.name }}
+      </td>
+      <td>
+        <span class="p-column-title">Date</span>
+        {{ manager.lastName }}
+      </td>
+      <td>
+        {{ manager.name }}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

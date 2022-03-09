@@ -1,0 +1,99 @@
+<p-table
+  #dt
+  [(selection)]="selectedCarrieres"
+  dataKey="id"
+  styleClass="p-datatable-customers"
+  [value]="carriers"
+  [rowHover]="true"
+  [rows]="5"
+  responsiveLayout="scroll"
+  [paginator]="true"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [filterDelay]="0"
+  [globalFilterFields]="['id', 'name', 'state']"
+  [rowsPerPageOptions]="[10, 25, 50]"
+  [loading]="loading"
+>
+  <ng-template pTemplate="caption">
+    <div
+      class="table-header flex flex-column sm:flex-row justify-content-between align-items-center"
+    >
+      <i
+        class="pi pi-bookmark"
+        [ngStyle]="{ color: 'var(--cyan-500)' }"
+      ></i>
+      List of {{ title }}
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          placeholder="Search"
+          (input)="filterGlobal(dt, $event)"
+        />
+      </span>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 3rem">
+        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+      </th>
+      <th pSortableColumn="name">
+        <div class="flex justify-content-between align-items-center">
+          Name
+          <p-sortIcon field="name"></p-sortIcon>
+          <p-columnFilter
+            type="text"
+            field="name"
+            display="menu"
+            class="ml-auto"
+          ></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="country.name">
+        <div class="flex justify-content-between align-items-center">
+          Country
+          <p-sortIcon field="country.name"></p-sortIcon>
+          <p-columnFilter
+            type="text"
+            field="country.name"
+            display="menu"
+            class="ml-auto"
+          ></p-columnFilter>
+        </div>
+      </th>
+      <th pSortableColumn="date">
+        <div class="flex justify-content-between align-items-center">
+          Date
+          <p-sortIcon field="date"></p-sortIcon>
+          <p-columnFilter
+            type="date"
+            field="date"
+            display="menu"
+            class="ml-auto"
+          ></p-columnFilter>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-carrier>
+    <tr class="p-selectable-row">
+      <td>
+        <p-tableCheckbox [value]="carrier"></p-tableCheckbox>
+      </td>
+      <td>
+        <span class="p-column-title">Name</span>
+        {{ carrier.name }}
+      </td>
+      <td>
+        <span class="p-column-title">Date</span>
+        {{ carrier.state }}
+      </td>
+      <td>
+        {{ carrier.amount }}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

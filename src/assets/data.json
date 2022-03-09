@@ -1,0 +1,92 @@
+{
+  "options": {
+    "carriers": [
+      {
+        "id": 1,
+        "name": "Administración y Administración Pública",
+        "state": false,
+        "amount": 20
+      },
+      {
+        "id": 2,
+        "name": "Arquitectura Moda y Diseño",
+        "state": false,
+        "amount": 20
+      },
+      { "id": 3, "name": "Arte y Bellas Artes", "state": false, "amount": 20 },
+      { "id": 4, "name": "Ciencias Políticas", "state": false, "amount": 20 },
+      {
+        "id": 5,
+        "name": "Ciencias Sociales y Humanidades",
+        "state": false,
+        "amount": 20
+      },
+      { "id": 6, "name": "Contabilidad", "state": false, "amount": 20 },
+      { "id": 7, "name": "Derecho y Leyes", "state": false, "amount": 20 },
+      { "id": 8, "name": "Educación", "state": false, "amount": 20 },
+      {
+        "id": 9,
+        "name": "Administración y Administración Pública",
+        "state": false,
+        "amount": 20
+      },
+      {
+        "id": 10,
+        "name": "Arquitectura Moda y Diseño",
+        "state": false,
+        "amount": 20
+      },
+      { "id": 11, "name": "Arte y Bellas Artes", "state": false, "amount": 20 },
+      { "id": 12, "name": "Ciencias Políticas", "state": false, "amount": 20 },
+      {
+        "id": 13,
+        "name": "Ciencias Sociales y Humanidades",
+        "state": false,
+        "amount": 20
+      },
+      {
+        "id": 14,
+        "name": "Arquitectura Moda y Diseño",
+        "state": false,
+        "amount": 20
+      },
+      { "id": 15, "name": "Arte y Bellas Artes", "state": false, "amount": 20 },
+      { "id": 16, "name": "Ciencias Políticas", "state": false, "amount": 20 },
+      {
+        "id": 17,
+        "name": "Ciencias Sociales y Humanidades",
+        "state": false,
+        "amount": 20
+      },
+      { "id": 18, "name": "Contabilidad", "state": false, "amount": 20 },
+      { "id": 19, "name": "Derecho y Leyes", "state": false, "amount": 20 },
+      { "id": 20, "name": "Educación", "state": false, "amount": 20 }
+    ],
+    "categories": [
+      { "id": 1, "name": "Administración de Empresas", "state": false },
+      { "id": 2, "name": "Medicina", "state": false },
+      { "id": 3, "name": "Enfermería", "state": false },
+      { "id": 4, "name": "Derecho", "state": false },
+      { "id": 5, "name": "Contabilidad y Auditoría", "state": false },
+      { "id": 6, "name": "Psicología", "state": false },
+      { "id": 7, "name": "Educación inicial", "state": false },
+      { "id": 8, "name": "Educación básica", "state": false },
+      { "id": 9, "name": "Educación básica", "state": false },
+      { "id": 10, "name": "Educación básica", "state": false }
+    ],
+    "managers": [
+      { "id": 1, "lastName": "Hernández", "name": "Alvaro" },
+      { "id": 2, "lastName": "García", "name": "Alvaro" },
+      { "id": 3, "lastName": "Martínez", "name": "Alvaro" },
+      { "id": 4, "lastName": "López", "name": "Alvaro" },
+      { "id": 5, "lastName": "González", "name": "Alvaro" },
+      { "id": 6, "lastName": "Pérez", "name": "Alvaro" },
+      { "id": 7, "lastName": "Rodríguez", "name": "Alvaro" },
+      { "id": 8, "lastName": "Sánchez", "name": "Alvaro" },
+      { "id": 9, "lastName": "Ramírez", "name": "Alvaro" },
+      { "id": 10, "lastName": "Cruz", "name": "Alvaro" },
+      { "id": 11, "lastName": "Flores", "name": "Alvaro" },
+      { "id": 12, "lastName": "Gómez", "name": "Alvaro" }
+    ]
+  }
+}
