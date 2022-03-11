@@ -1,6 +1,5 @@
 <p-table
   #dt
-  [(selection)]="selectedCarrieres"
   dataKey="id"
   styleClass="p-datatable-carrieres"
   [value]="categories"
@@ -33,22 +32,7 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th style="width: 3rem">
-        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
-      </th>
-      <th pSortableColumn="id">
-        <div class="flex justify-content-between align-items-center">
-          Id
-          <p-sortIcon field="id"></p-sortIcon>
-          <p-columnFilter
-            type="text"
-            field="id"
-            display="menu"
-            class="ml-auto"
-          ></p-columnFilter>
-        </div>
-      </th>
-      <th pSortableColumn="name">
+      <th colspan="2" pSortableColumn="name">
         <div class="flex justify-content-between align-items-center">
           Name
           <p-sortIcon field="name"></p-sortIcon>
@@ -60,35 +44,23 @@
           ></p-columnFilter>
         </div>
       </th>
-      <th pSortableColumn="state">
-        <div class="flex justify-content-between align-items-center">
-          State
-          <p-sortIcon field="state"></p-sortIcon>
-          <p-columnFilter
-            type="text"
-            field="state"
-            display="menu"
-            class="ml-auto"
-          ></p-columnFilter>
-        </div>
-      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-carrier>
     <tr class="p-selectable-row">
       <td>
-        <p-tableCheckbox [value]="carrier"></p-tableCheckbox>
-      </td>
-      <td>
         <span class="p-column-title">Name</span>
         {{ carrier.name }}
       </td>
       <td>
-        <span class="p-column-title">Date</span>
-        {{ carrier.state }}
-      </td>
-      <td>
-        {{ carrier.amount }}
+        <button
+          pButton
+          class="p-element p-ripple p-button-rounded p-button-success p-component flex justify-content-center"
+          (click)="selectOption(carrier.id!)"
+        >
+          <i class="pi pi-check-circle"></i>
+          <span class="ml-2 font-bold">Choose</span>
+        </button>
       </td>
     </tr>
   </ng-template>

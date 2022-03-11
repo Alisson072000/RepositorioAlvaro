@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
-import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 import data from '../../../assets/data.json';
 
@@ -9,16 +8,13 @@ import data from '../../../assets/data.json';
   templateUrl: './career.component.html',
   styleUrls: ['./career.component.css'],
 })
-export class CareerComponent implements OnInit {
+export class CareerComponent implements OnInit, OnDestroy {
   title = 'Careers';
   carriers: any[] = [];
-  selectedCarrieres: any[] = [];
+  selectedCarrier: any = {};
   loading: boolean = true;
 
-  constructor(
-    private dynamicDialogRef: DynamicDialogRef,
-    private dynamicDialogConfig: DynamicDialogConfig
-  ) {}
+  constructor(private dynamicDialogRef: DynamicDialogRef) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -27,7 +23,16 @@ export class CareerComponent implements OnInit {
   }
 
   filterGlobal(dt: any, event: Event) {
-    console.log(this.selectedCarrieres);
     dt.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
+
+  selectOption(id: number) {
+    this.carriers.find(
+      (carrier) => (this.selectedCarrier = carrier.id === id ? carrier : null)
+    );
+    this.dynamicDialogRef.close(this.selectedCarrier);
+    this.ngOnDestroy();
+  }
+
+  ngOnDestroy() {}
 }

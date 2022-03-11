@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import data from '../assets/data.json';
 import { DialogService } from 'primeng/dynamicdialog';
 import { CareerComponent } from './modals/career/career.component';
 import { CategoryComponent } from './modals/category/category.component';
@@ -14,25 +13,21 @@ import { ManagerComponent } from './modals/manager/manager.component';
 export class AppComponent implements OnInit {
   title = 'Responsables';
   assigned: boolean = false;
-  carriers: any[] = [];
-  selectedCarrieres: any[] = [];
   loading: boolean = true;
+  selectedOption: selectedOption = {};
+  selectedCategory: any[] = [];
+  selectedManagers: any[] = [];
 
   constructor(public dialogService: DialogService) {}
 
   ngOnInit(): void {
     this.loading = true;
-    this.carriers = data.options?.['carriers'];
     this.loading = false;
   }
 
-  filterGlobal(dt: any, event: Event) {
-    console.log(this.selectedCarrieres);
-    dt.filterGlobal((event.target as HTMLInputElement).value, 'contains');
-  }
-
-  deleteSelectedOption() {
-    // Eliminar opción elegida del form
+  toAssign(): string {
+    // código para assignar
+    return 'envio de datos a la db';
   }
 
   showCareerComponent() {
@@ -40,11 +35,20 @@ export class AppComponent implements OnInit {
       header: 'Choose A Career',
       width: '90%',
     });
+    ref.onClose.subscribe((career: any) => {
+      if (career) {
+        this.selectedOption.selectedCarrier = career;
+      }
+    });
   }
+
   showCategoryComponent() {
     const ref = this.dialogService.open(CategoryComponent, {
       header: `Choose A Category`,
       width: '90%',
+    });
+    ref.onClose.subscribe((category) => {
+      this.selectedOption.selectedCategory = category;
     });
   }
   showManagerComponent() {
@@ -52,7 +56,14 @@ export class AppComponent implements OnInit {
       header: 'Choose A Manager',
       width: '90%',
     });
+    ref.onClose.subscribe((managers) => {
+      this.selectedOption.selectedManagers = managers;
+    });
   }
 }
 
-// https://www.primefaces.org/primeng/#/dynamicdialog
+interface selectedOption {
+  selectedCarrier?: { id: number; name: string };
+  selectedCategory?: { id: number; name: string };
+  selectedManagers?: [{ id: number; name: string }];
+}

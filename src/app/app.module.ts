@@ -11,6 +11,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { CareerComponent } from './modals/career/career.component';
 import { CategoryComponent } from './modals/category/category.component';
 import { ManagerComponent } from './modals/manager/manager.component';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { ManagerComponent } from './modals/manager/manager.component';
     InputTextModule,
     DynamicDialogModule,
     TableModule,
+    RadioButtonModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
