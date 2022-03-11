@@ -14,20 +14,31 @@ export class AppComponent implements OnInit {
   title = 'Responsables';
   assigned: boolean = false;
   loading: boolean = true;
-  selectedOption: selectedOption = {};
-  selectedCategory: any[] = [];
-  selectedManagers: any[] = [];
+  selectedOption: any = {};
+  assignments: any[] = [];
 
   constructor(public dialogService: DialogService) {}
 
   ngOnInit(): void {
     this.loading = true;
     this.loading = false;
+    this.assignments = [];
   }
 
   toAssign(): string {
     // código para assignar
     return 'envio de datos a la db';
+  }
+
+  editAssignment(id: number) {
+    this.assignments.find(
+      (assignment) =>
+        (this.selectedOption = assignment.id === id ? assignment : null)
+    );
+  }
+
+  filterGlobal(dt: any, event: Event) {
+    dt.filterGlobal((event.target as HTMLInputElement).value, 'contains');
   }
 
   showCareerComponent() {
@@ -60,10 +71,4 @@ export class AppComponent implements OnInit {
       this.selectedOption.selectedManagers = managers;
     });
   }
-}
-
-interface selectedOption {
-  selectedCarrier?: { id: number; name: string };
-  selectedCategory?: { id: number; name: string };
-  selectedManagers?: [{ id: number; name: string }];
 }

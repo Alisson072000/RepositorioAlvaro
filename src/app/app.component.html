@@ -104,9 +104,8 @@
         >Selected Managers</span
       >
       <div
-        class="w-12 sm:w-3 py-2 px-3 px-9 flex justify-content-start h-20rem overflow-y-scroll"
+        class="w-12 sm:w-3 py-2 px-3 px-9 flex justify-content-start h-10rem overflow-y-scroll"
       >
-        <h4>Managers</h4>
         <ul class="flex flex-column">
           <li *ngFor="let manager of selectedOption.selectedManagers">
             <span>
@@ -122,9 +121,125 @@
           class="p-element p-ripple p-button-rounded p-button-success p-component flex justify-content-center"
         >
           <i class="pi pi-times-circle"></i>
-          <span class="ml-2 font-bold">Correct</span>
+          <span class="ml-2 font-bold">To Assign</span>
         </button>
       </div>
     </div>
   </div>
+
+  <p-table
+    #dt
+    [value]="assignments"
+    dataKey="id"
+    styleClass="p-datatable-customers"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [loading]="loading"
+    responsiveLayout="scroll"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="[
+      'name',
+      'country.name',
+      'representative.name',
+      'status'
+    ]"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header flex justify-content-between">
+        Assignments
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            (input)="dt.filterGlobal(dt, $event)"
+            placeholder="Global Search"
+          />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="career">
+          <div class="flex justify-content-between align-items-center">
+            Career
+            <p-sortIcon field="career"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="career"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="category">
+          <div class="flex justify-content-between align-items-center">
+            Category
+            <p-sortIcon field="category"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="category"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="manager">
+          <div class="flex justify-content-between align-items-center">
+            Manager
+            <p-sortIcon field="manager"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="manager"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+        <th pSortableColumn="id">
+          <div class="flex justify-content-between align-items-center">
+            Edit
+            <p-sortIcon field="id"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="id"
+              display="menu"
+              class="ml-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-assignment>
+      <tr class="p-selectable-row">
+        <td>
+          <span class="p-column-title">Name</span>
+          {{ assignment.career | json }}
+        </td>
+        <td>
+          <span class="p-column-title">Name</span>
+          {{ assignment.category | json }}
+        </td>
+        <td>
+          <span class="p-column-title">Name</span>
+          {{ assignment.user | json }}
+        </td>
+        <td>
+          <button
+            pButton
+            (click)="editAssignment(assignment.id)"
+            class="p-element p-ripple p-button-rounded p-button-warning p-component flex justify-content-center"
+          >
+            <i class="pi pi-pencil"></i>
+            <span class="ml-2 font-bold">Edit</span>
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </section>
